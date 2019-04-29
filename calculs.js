@@ -7,6 +7,7 @@ class Partit {
   }
 }
 
+//resultats abril 2019
 let partits=[
   new Partit("PSOE",  123, 'red'),
   new Partit("PP",     66, 'blue'),
@@ -17,7 +18,7 @@ let partits=[
   new Partit("JxCAT",   7, 'red'),
   new Partit("PNB",     6, '#af0'),
   new Partit("EHB",     4, 'green'),
-  new Partit("CC-PNC", 2, 'yellow'),
+  new Partit("CC-PNC",  2, 'yellow'),
   new Partit("NA",      2, 'red'),
   new Partit("COMP",    1, 'orange'),
   new Partit("PRC",     1, 'lightgreen'),
