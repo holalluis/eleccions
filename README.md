@@ -1,2 +1,5 @@
 Generador automàtic de combinacions d'escons amb majoria
-# eleccions
+
+![alt text][logo]
+
+[logo]: https://github.com/holalluis/eleccions/raw/master/out.gif "gif"
