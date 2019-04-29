@@ -1,7 +1,11 @@
-<!doctype html><html><head><meta charset=utf8>
+<!doctype html><html><head>
+  <meta charset=utf8>
+  <meta name=viewport content="width=device-width">
+  <title>Eleccions</title>
   <style>
     body{
       font-family:Charter,serif;
+      font-family: Roboto Slab, Roboto, Calibri, Corbel, sans-serif;
       max-width:80ch;
       padding:1rem;
       margin:auto;
@@ -16,13 +20,14 @@
 </head><body><center>
 <h1>Eleccions 2019</h1>
 <h2>Combinacions possibles amb majoria (<span id=combs>calculant...</span>)</h2>
+<h5>Fes click als partit per veure les opcions per formar combinacions amb majoria</h5>
 <main style=display:flex>
   <table>
-    <tr><th colspan=2>Partit<th>Escons<th>Inclou
+    <tr><th colspan=2>Partit<th>Escons<th>Inclós
     <tbody id=partits></tbody>
   </table>
   <table>
-    <tr><th>Pacte<th>Escons
+    <tr><th>Pacte<th>Suma escons
     <tbody id=pactes>
       <tr><td colspan=3>calculant...
     </tbody>
@@ -92,6 +97,11 @@
       newRow.insertCell(-1).innerHTML=nom;
       newRow.insertCell(-1).innerHTML=escons;
     });
+
+    if(combs_majoria.length==0){
+      let newRow = taula_pactes.insertRow(-1);
+      newRow.insertCell(-1).outerHTML="<td colspan=2><small>cap combinació possible</small>"
+    }
   }
   window.addEventListener('load',omple_taula_pactes,false);
 </script>

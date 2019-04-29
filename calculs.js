@@ -3,7 +3,7 @@ class Partit {
     this.nom=nom;
     this.escons=escons;
     this.color=color;
-    this.inclos=true;
+    this.inclos=false;
   }
 }
 
@@ -14,10 +14,10 @@ let partits=[
   new Partit("PODEM",  42, 'purple'),
   new Partit("VOX",    24, 'green'),
   new Partit("ERC",    15, 'yellow'),
-  new Partit("JXCAT",   7, 'red'),
-  new Partit("PNV",     6, '#af0'),
+  new Partit("JxCAT",   7, 'red'),
+  new Partit("PNB",     6, '#af0'),
   new Partit("EHB",     4, 'green'),
-  new Partit("CCA-PNC", 2, 'yellow'),
+  new Partit("CC-PNC", 2, 'yellow'),
   new Partit("NA",      2, 'red'),
   new Partit("COMP",    1, 'orange'),
   new Partit("PRC",     1, 'lightgreen'),
@@ -41,17 +41,17 @@ function crea_combinacio(partits, combinacio, inici, index, n){
     return;
   }
 
-  let i=inici; 
+  let i=inici;
   while(i<=final && final-i+1 >= n-index){
-    combinacio[index] = partits[i]; 
-    crea_combinacio(partits, combinacio, i+1, index+1, n); 
-    i++; 
+    combinacio[index] = partits[i];
+    crea_combinacio(partits, combinacio, i+1, index+1, n);
+    i++;
   }
 }
 
 //omple array combinacions de n en n
 for(let n=2; n<=partits.length; n++){
-  crea_combinacio(partits, false, 0, 0, n); 
+  crea_combinacio(partits, false, 0, 0, n);
 }
 
 //console.log(combinacions);
