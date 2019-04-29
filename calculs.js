@@ -18,7 +18,7 @@ let partits=[
   new Partit("JxCAT",   7, 'red'),
   new Partit("PNB",     6, '#af0'),
   new Partit("EHB",     4, 'green'),
-  new Partit("CC-PNC",  2, 'yellow'),
+  new Partit("CCPNC",   2, 'yellow'),
   new Partit("NA",      2, 'red'),
   new Partit("COMP",    1, 'orange'),
   new Partit("PRC",     1, 'lightgreen'),
@@ -52,7 +52,7 @@ function crea_combinacio(partits, combinacio, inici, index, n){
 
 //omple array combinacions de n en n
 for(let n=2; n<=partits.length; n++){
-  crea_combinacio(partits, false, 0, 0, n);
+  crea_combinacio(partits,false,0,0,n);
 }
 
 //console.log(combinacions);
