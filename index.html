@@ -1,6 +1,4 @@
-<!doctype html><html><head>
-  <meta charset=utf8>
-
+<!doctype html><html><head><meta charset=utf8>
   <style>
     body{
       font-family:Charter,serif;
@@ -8,195 +6,92 @@
       padding:1rem;
       margin:auto;
     }
-    table{border-collapse:collapse;}
+    table{border-collapse:collapse;margin-right:5px}
     td,th{border:1px solid #ccc}
     th{background:#eee}
-    #partits{margin-right:5px}
+    .numero{
+      text-align:right;
+    }
   </style>
-
-  <script>
-    let majoria=176;
-    function Partit(nom,escons,color) {
-      this.nom=nom;
-      this.escons=escons;
-      this.color=color;
-    }
-
-    let partits = [
-      new Partit("PP",      137, 'blue'),
-      new Partit("PSOE",    85,  'red'),
-      new Partit("PODEMOS", 71,  'purple'),
-      new Partit("Cs",      32,  'orange'),
-      new Partit("ERC",     9,   'yellow'),
-      new Partit("CDC",     8,   'lightblue'),
-      new Partit("PNV",     5,   'green'),
-      new Partit("EHB", 2,   'lightgreen'),
-      new Partit("CCaPNC",  1,   'rgb(142,180,97)'),
-    ];
-  </script>
-
-  <script>
-    //calcula coses
-    function combinacions() {
-      var n=partits.length;
-      var combs=[];
-      for(var i=1;i<=n;i++) {
-        combs.push(binomial(n,i));
-      }
-      return combs;
-    }
-
-    function grupsde(k) {
-      var n=partits.length;
-      var pactes = []
-
-      //cal millorar aquesta part
-      switch(k) {
-        case 1:
-          for(var i=0;i<n;i++)
-            pactes.push(pacta([partits[i]]));
-          break;
-        case 2:
-          for(var i=0;i<n;i++)
-          for(var j=i+1;j<n;j++)
-            pactes.push(pacta([partits[i],partits[j]]));
-          break;
-        case 3:
-          for(var i=0;i<n;i++)
-          for(var j=i+1;j<n;j++)
-          for(var k=j+1;k<n;k++)
-            pactes.push(pacta([partits[i],partits[j],partits[k]]));
-          break;
-        case 4:
-          for(var i=0;i<n;i++)
-          for(var j=i+1;j<n;j++)
-          for(var k=j+1;k<n;k++)
-          for(var l=k+1;l<n;l++)
-            pactes.push(pacta([partits[i],partits[j],partits[k],partits[l]]));
-          break;
-        case 5:
-          for(var i=0;i<n;i++)
-          for(var j=i+1;j<n;j++)
-          for(var k=j+1;k<n;k++)
-          for(var l=k+1;l<n;l++)
-          for(var m=l+1;m<n;m++)
-            pactes.push(pacta([partits[i],partits[j],partits[k],partits[l],partits[m]]));
-          break;
-        case 6:
-          for(var i=0;i<n;i++)
-          for(var j=i+1;j<n;j++)
-          for(var k=j+1;k<n;k++)
-          for(var l=k+1;l<n;l++)
-          for(var m=l+1;m<n;m++)
-          for(var N=m+1;N<n;N++)
-            pactes.push(pacta([partits[i],partits[j],partits[k],partits[l],partits[m],partits[N]]));
-          break;
-        case 7:
-          for(var i=0;i<n;i++)
-          for(var j=i+1;j<n;j++)
-          for(var k=j+1;k<n;k++)
-          for(var l=k+1;l<n;l++)
-          for(var m=l+1;m<n;m++)
-          for(var N=m+1;N<n;N++)
-          for(var o=N+1;o<n;o++)
-            pactes.push(pacta([partits[i],partits[j],partits[k],partits[l],partits[m],partits[N],partits[o]]));
-          break;
-        case 8:
-          for(var i=0;i<n;i++)
-          for(var j=i+1;j<n;j++)
-          for(var k=j+1;k<n;k++)
-          for(var l=k+1;l<n;l++)
-          for(var m=l+1;m<n;m++)
-          for(var N=m+1;N<n;N++)
-          for(var o=N+1;o<n;o++)
-          for(var p=o+1;p<n;p++)
-            pactes.push(pacta([partits[i],partits[j],partits[k],partits[l],partits[m],partits[N],partits[o],partits[p]]));
-          break;
-        case 9:
-          for(var i=0;i<n;i++)
-          for(var j=i+1;j<n;j++)
-          for(var k=j+1;k<n;k++)
-          for(var l=k+1;l<n;l++)
-          for(var m=l+1;m<n;m++)
-          for(var N=m+1;N<n;N++)
-          for(var o=N+1;o<n;o++)
-          for(var p=o+1;p<n;p++)
-          for(var q=p+1;q<n;q++)
-            pactes.push(pacta([partits[i],partits[j],partits[k],partits[l],partits[m],partits[N],partits[o],partits[p],partits[q]]));
-          break;
-        case 10:
-          for(var i=0;i<n;i++)
-          for(var j=i+1;j<n;j++)
-          for(var k=j+1;k<n;k++)
-          for(var l=k+1;l<n;l++)
-          for(var m=l+1;m<n;m++)
-          for(var N=m+1;N<n;N++)
-          for(var o=N+1;o<n;o++)
-          for(var p=o+1;p<n;p++)
-          for(var q=p+1;q<n;q++)
-          for(var r=q+1;r<n;r++)
-            pactes.push(pacta([partits[i],partits[j],partits[k],partits[l],partits[m],partits[N],partits[o],partits[p],partits[q],partits[r]]));
-          break;
-      }
-      return pactes
-    }
-
-    function pacta(arr) {
-      let nom=[];
-      let escons=0;
-      for(let i in arr) {
-        nom.push(arr[i].nom);
-        escons+=arr[i].escons;
-      }
-      let pacte = {nom:nom.join('<span style=color:#bbb>+</span>'),escons:escons}
-      return pacte
-    }
-
-    function totsElsGrups() {
-      //totes les combinacions de partits
-      let grups=[];
-      for(let i=2;i<=10;i++) grups=grups.concat(grupsde(i));
-      return grups;
-    }
-  </script>
-
-  <script>
-    //mates
-    function factorial(n) {
-      if(n==0) return 1;
-      return n*factorial(n-1);
-    }
-    function binomial(n,k) {
-      var a = factorial(n);
-      var b = factorial(k);
-      var c = factorial(n-k);
-      return a/(b*c);
-    }
-  </script>
 </head><body><center>
-
-<h1>Eleccions 2016</h1>
-<h2>Calculadora de combinacions amb majoria (<span id=combs>0</span>)</h2>
-
+<h1>Eleccions 2019</h1>
+<h2>Combinacions possibles amb majoria (<span id=combs>calculant...</span>)</h2>
 <main style=display:flex>
-  <table id=partits>
-    <tr><th colspan=2>Partit<th>Escons
-    <script>
-      partits.forEach(p=>{
-        document.write("<tr><td style='background:"+p.color+"'>&emsp; <td>"+p.nom+"<td>"+p.escons);
-      });
-    </script>
+  <table>
+    <tr><th colspan=2>Partit<th>Escons<th>Inclou
+    <tbody id=partits></tbody>
   </table>
-
-  <table id=pactes>
-    <tr><th>Núm<th>Pacte<th>Escons
-    <script>
-      let pactes = totsElsGrups().filter(p=>p.escons>=majoria);
-      document.querySelector('#combs').innerHTML=pactes.length;
-      pactes.forEach((p,i)=>{
-        let color = p.escons >= majoria ? "green":"";
-        document.write("<tr pacte="+i+"><td>"+(parseInt(i)+1)+"<td>"+p.nom+"<td style=background:"+color+">"+p.escons)
-      });
-    </script>
+  <table>
+    <tr><th>Pacte<th>Escons
+    <tbody id=pactes>
+      <tr><td colspan=3>calculant...
+    </tbody>
   </table>
 </main>
+
+<script src="calculs.js"></script>
+<script>
+  //calcula total escons i majoria
+  let total = partits.map(p=>p.escons).reduce((p,c)=>(p+c));
+  let majoria = total/2+1;
+
+  function omple_taula_partits(){
+    let taula_partits = document.querySelector('#partits');
+    //omple taula partits
+    partits.forEach(p=>{
+      let newRow = taula_partits.insertRow(-1);
+      newRow.insertCell(-1).outerHTML=`<td style=background:${p.color}>&emsp;`
+      newRow.insertCell(-1).innerHTML=p.nom;
+      newRow.insertCell(-1).outerHTML=`<td class=numero>${p.escons}`;
+
+      let newCell=newRow.insertCell(-1);
+      let checkbox = document.createElement('input'); newCell.appendChild(checkbox);
+      checkbox.type="checkbox";
+      checkbox.checked=p.inclos;
+      checkbox.onchange=function(){
+        p.inclos = checkbox.checked;
+        omple_taula_pactes();
+      };
+    });
+
+    //inserta total escons i majoria a baix
+    let newRow = taula_partits.insertRow(-1);
+    newRow.insertCell(-1).outerHTML="<td colspan=2>total";
+    newRow.insertCell(-1).outerHTML=`<td colspan=2 class=numero>${total}`
+    newRow = taula_partits.insertRow(-1);
+    newRow.insertCell(-1).outerHTML="<td colspan=2>majoria";
+    newRow.insertCell(-1).outerHTML=`<td colspan=2 class=numero>${majoria}`
+  }
+  omple_taula_partits();
+
+  function omple_taula_pactes(){
+    let taula_pactes = document.querySelector('#pactes');
+    taula_pactes.innerHTML="";
+
+    //filtra combinacions per si tots els partits estan inclosos
+    combs_inclosos = combinacions.filter(c=>{
+      return c.every(p=>p.inclos);
+    });
+
+    //filtra combinacions per si tenen majoria
+    let combs_majoria = combs_inclosos.filter(c=>{
+      let diputats_suma = c.map(partit=>partit.escons).reduce((p,c)=>(p+c));
+      return diputats_suma >= majoria;
+    });
+
+    //filtra excloent partits
+    let partits_exclosos = ["VOX"];
+
+    document.querySelector('#combs').innerHTML=combs_majoria.length;
+
+    //omple taula pactes
+    combs_majoria.forEach(combinacio=>{
+      let newRow = taula_pactes.insertRow(-1);
+      let nom    = combinacio.map(partit=>partit.nom).join('<span style=color:#bbb>+</span>');
+      let escons = combinacio.map(partit=>partit.escons).reduce((p,c)=>(p+c));
+      newRow.insertCell(-1).innerHTML=nom;
+      newRow.insertCell(-1).innerHTML=escons;
+    });
+  }
+  window.addEventListener('load',omple_taula_pactes,false);
+</script>
