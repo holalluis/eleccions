@@ -42,13 +42,14 @@
 
   function omple_taula_partits(){
     let taula_partits = document.querySelector('#partits');
+
     //omple taula partits
     partits.forEach(p=>{
       let newRow = taula_partits.insertRow(-1);
       newRow.insertCell(-1).outerHTML=`<td style=background:${p.color}>&emsp;`
       newRow.insertCell(-1).innerHTML=p.nom;
       newRow.insertCell(-1).outerHTML=`<td class=numero>${p.escons}`;
-
+      //crea checkbox per incloure o no el partit
       let newCell=newRow.insertCell(-1);
       let checkbox = document.createElement('input'); newCell.appendChild(checkbox);
       checkbox.type="checkbox";
@@ -84,12 +85,10 @@
       return diputats_suma >= majoria;
     });
 
-    //filtra excloent partits
-    let partits_exclosos = ["VOX"];
-
+    //actualitza comptador de combinacions
     document.querySelector('#combs').innerHTML=combs_majoria.length;
 
-    //omple taula pactes
+    //omple taula pactes possibles
     combs_majoria.forEach(combinacio=>{
       let newRow = taula_pactes.insertRow(-1);
       let nom    = combinacio.map(partit=>partit.nom).join('<span style=color:#bbb>+</span>');
@@ -98,10 +97,13 @@
       newRow.insertCell(-1).innerHTML=escons;
     });
 
+    //nota per si no hi ha combinacions possibles
     if(combs_majoria.length==0){
       let newRow = taula_pactes.insertRow(-1);
       newRow.insertCell(-1).outerHTML="<td colspan=2><small>cap combinació possible</small>"
     }
   }
+
+  //executa funció omplir pactes quan es carrega la pàgina
   window.addEventListener('load',omple_taula_pactes,false);
 </script>
