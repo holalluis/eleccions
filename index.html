@@ -92,9 +92,9 @@
     combs_majoria.forEach(combinacio=>{
       let newRow = taula_pactes.insertRow(-1);
       let nom    = combinacio.map(partit=>partit.nom).join('<span style=color:#bbb>+</span>');
-      let escons = combinacio.map(partit=>partit.escons).reduce((p,c)=>(p+c));
       newRow.insertCell(-1).innerHTML=nom;
-      newRow.insertCell(-1).innerHTML=escons;
+      let escons = combinacio.map(partit=>partit.escons).reduce((p,c)=>(p+c));
+      newRow.insertCell(-1).outerHTML=`<td class=numero>${escons}`;
     });
 
     //nota per si no hi ha combinacions possibles
