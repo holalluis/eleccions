@@ -1,3 +1,4 @@
+//classe Partit
 class Partit {
   constructor(nom,escons,color){
     this.nom=nom||'nom';
@@ -7,7 +8,7 @@ class Partit {
   }
 }
 
-//resultats abril 2019
+//resultats eleccions
 let partits=[
   new Partit("PSOE",  120, 'red'),
   new Partit("PP",     88, 'blue'),
