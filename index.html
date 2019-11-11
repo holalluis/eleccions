@@ -22,7 +22,7 @@
     }
   </style>
 </head><body><center>
-<h1>Eleccions 2019</h1>
+<h1>Eleccions 10N 2019</h1>
 <h2>Combinacions possibles amb majoria (<span id=combs>calculant...</span>)</h2>
 <h5>Selecciona partits per veure si poden formar combinacions amb majoria</h5>
 <main style=display:flex>
@@ -40,10 +40,6 @@
 
 <script src="calculs.js"></script>
 <script>
-  //calcula total escons i majoria
-  let total = partits.map(p=>p.escons).reduce((p,c)=>(p+c));
-  let majoria = total/2+1;
-
   function omple_taula_partits(){
     let taula_partits = document.querySelector('#partits');
 
@@ -78,22 +74,23 @@
     let taula_pactes = document.querySelector('#pactes');
     taula_pactes.innerHTML="";
 
-    //filtra combinacions per si tots els partits estan inclosos
-    combs_inclosos = combinacions.filter(c=>{
+    //filtra combinacions per: si tots els partits estan inclosos
+    //filtra combinacions per: majoria
+    //filtra combinacions per: redundant
+    let combinacions_filtrades = combinacions.filter(c=>{
       return c.every(p=>p.inclos);
-    });
-
-    //filtra combinacions per si tenen majoria
-    let combs_majoria = combs_inclosos.filter(c=>{
+    }).filter(c=>{
       let diputats_suma = c.map(partit=>partit.escons).reduce((p,c)=>(p+c));
       return diputats_suma >= majoria;
-    });
+    }).filter(c=>{
+      return es_redundant(c)==false;
+    });;
 
     //actualitza comptador de combinacions
-    document.querySelector('#combs').innerHTML=combs_majoria.length;
+    document.querySelector('#combs').innerHTML=combinacions_filtrades.length;
 
     //omple taula pactes possibles
-    combs_majoria.forEach(combinacio=>{
+    combinacions_filtrades.forEach(combinacio=>{
       let newRow = taula_pactes.insertRow(-1);
       let nom    = combinacio.map(partit=>partit.nom).join('<span style=color:#bbb>+</span>');
       newRow.insertCell(-1).innerHTML=nom;
@@ -101,10 +98,10 @@
       newRow.insertCell(-1).outerHTML=`<td class=numero>${escons}`;
     });
 
-    //nota per si no hi ha combinacions possibles
-    if(combs_majoria.length==0){
+    //si no hi ha combinacions possibles posa nota
+    if(combinacions_filtrades.length==0){
       let newRow = taula_pactes.insertRow(-1);
-      newRow.insertCell(-1).outerHTML="<td colspan=2><small>cap combinació possible</small>"
+      newRow.insertCell(-1).outerHTML=`<td colspan=2><small>cap combinació amb els partits seleccionats suma &gt; ${majoria-1}</small>`;
     }
   }
 
