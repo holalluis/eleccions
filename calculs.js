@@ -18,9 +18,9 @@ let partits=[
   new Partit("ERC",     7, 'gold'),
   new Partit("EHB",     6, 'rgb(146,170,58)'),
   new Partit("PNV",     5, 'green'),
-  new Partit("UPN",     1, ''),
-  new Partit("CCa",     1, ''),
-  new Partit("BNG",     1, ''),
+  new Partit("UPN",     1, 'darkred'),
+  new Partit("CCA",     1, 'cyan'),
+  new Partit("BNG",     1, 'lightblue'),
 ];
 
 //calcula total escons i majoria
