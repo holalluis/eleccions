@@ -10,22 +10,17 @@ class Partit {
 
 //resultats eleccions
 let partits=[
-  new Partit("PSOE",  120, 'red'),
-  new Partit("PP",     88, 'blue'),
-  new Partit("VOX",    52, 'lime'),
-  new Partit("PODEM",  35, 'purple'),
-  new Partit("ERC",    13, 'gold'),
-  new Partit("Cs",     10, 'orange'),
-  new Partit("JxCAT",   8, 'pink'),
-  new Partit("PNB",     7, 'green'),
-  new Partit("EHB",     5, 'rgb(146,170,58)'),
-  new Partit("MP",      3, 'cyan'),
-  new Partit("CUP",     2, 'yellow'),
-  new Partit("CCa",     2, ''),
-  new Partit("NA+",     2, ''),
-  new Partit("BNG",     1, ''),
-  new Partit("PRC",     1, ''),
-  new Partit("TE",      1, ''),
+  new Partit("PP",    136, 'blue'),
+  new Partit("PSOE",  122, 'red'),
+  new Partit("VOX",    33, 'lime'),
+  new Partit("SUMAR",  31, 'purple'),
+  new Partit("JxCAT",   7, 'pink'),
+  new Partit("ERC",     7, 'gold'),
+  new Partit("EHB",     6, 'rgb(146,170,58)'),
+  new Partit("PNV",     5, 'green'),
+  new Partit("UPN",     1, 'darkred'),
+  new Partit("CCA",     1, 'cyan'),
+  new Partit("BNG",     1, 'lightblue'),
 ];
 
 //calcula total escons i majoria
