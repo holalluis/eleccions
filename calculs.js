@@ -10,8 +10,8 @@ class Partit {
 
 //resultats eleccions
 let partits=[
-  new Partit("PSC",    41, 'red'),
-  new Partit("JUNTS",  36, 'blue'),
+  new Partit("PSC",    42, 'red'),
+  new Partit("JUNTS",  35, 'blue'),
   new Partit("ERC",    20, 'gold'),
   new Partit("PP",     15, 'cyan'),
   new Partit("VOX",    11, 'lime'),
