@@ -10,22 +10,19 @@ class Partit {
 
 //resultats eleccions
 let partits=[
-  new Partit("PP",    136, 'blue'),
-  new Partit("PSOE",  122, 'red'),
-  new Partit("VOX",    33, 'lime'),
-  new Partit("SUMAR",  31, 'purple'),
-  new Partit("JxCAT",   7, 'pink'),
-  new Partit("ERC",     7, 'gold'),
-  new Partit("EHB",     6, 'rgb(146,170,58)'),
-  new Partit("PNV",     5, 'green'),
-  new Partit("UPN",     1, 'darkred'),
-  new Partit("CCA",     1, 'cyan'),
-  new Partit("BNG",     1, 'lightblue'),
+  new Partit("PSC",    41, 'red'),
+  new Partit("JUNTS",  36, 'blue'),
+  new Partit("ERC",    20, 'gold'),
+  new Partit("PP",     15, 'cyan'),
+  new Partit("VOX",    11, 'lime'),
+  new Partit("COMUNS",  6, 'purple'),
+  new Partit("CUP",     4, 'yellow'),
+  new Partit("AC",      2, 'darkblue'),
 ];
 
 //calcula total escons i majoria
 let total = partits.map(p=>p.escons).reduce((p,c)=>(p+c));
-let majoria = total/2+1;
+let majoria = Math.floor(total/2)+1;
 
 //combinacions de partits
 let combinacions=[];
